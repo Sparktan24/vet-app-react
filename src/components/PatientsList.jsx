@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const PatientsList = () => {
   return (
-    <><h2>PatientsList</h2></>
-  )
-}
+    <div className="w-1/2 lg:w-3/5">
+      <h2>PatientsList</h2>
+    </div>
+  );
+};
 
-export default PatientsList
+export default PatientsList;

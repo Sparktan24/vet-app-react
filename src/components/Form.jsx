@@ -1,15 +1,62 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Error from "./Error";
 
-const Form = () => {
+const Form = ({ patients, setPatients }) => {
+  const [namePet, setNamePet] = useState("");
+  const [owner, setOwner] = useState("");
+  const [email, setEmail] = useState("");
+  const [registrationDate, setRegistrationDate] = useState("");
+  const [symptoms, setSymptoms] = useState("");
+
+  const [error, setError] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    //  FORM VALIDATION
+    if ([namePet, owner, email, registrationDate, symptoms].includes("")) {
+      console.log("There is an empty row");
+      setError(true);
+      return;
+    }
+    setError(false);
+
+    //  Patient object
+    const objectPatient = {
+      namePet,
+      owner,
+      email,
+      registrationDate,
+      symptoms,
+    };
+    //console.log(objectPatient);
+    setPatients([...patients, objectPatient]);
+
+    //  RESET FORM
+    setNamePet("");
+    setOwner("");
+    setEmail("");
+    setRegistrationDate("");
+    setSymptoms("");
+  };
+
   return (
-    <div className="md:w-1/2 lg:w-2/5">
+    <div className="md:w-1/2 lg:w-2/5 mx-5">
       <h2 className="font-black text-3xl text-center">Patients monitoring</h2>
 
       <p className="text-lg mt-5 text-center mb-10">
         Add Patient & <span className="text-indigo-600 font-bold">manage</span>
       </p>
 
-      <form className="bg-white shadow-md rounded-lg py-10 px-5 mb-10">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
+      >
+        {error && (
+          <Error>
+            <p>All fields are required</p>
+          </Error>
+        )}
         <div className="mb-5">
           <label
             htmlFor="pet"
@@ -22,6 +69,8 @@ const Form = () => {
             type="text"
             placeholder="Pets name"
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+            value={namePet}
+            onChange={(e) => setNamePet(e.target.value)}
           />
         </div>
 
@@ -37,6 +86,8 @@ const Form = () => {
             type="text"
             placeholder="Owners name"
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+            value={owner}
+            onChange={(e) => setOwner(e.target.value)}
           />
         </div>
 
@@ -52,6 +103,8 @@ const Form = () => {
             type="email"
             placeholder="Email contact owner"
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
@@ -66,6 +119,8 @@ const Form = () => {
             id="Register"
             type="date"
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+            value={registrationDate}
+            onChange={(e) => setRegistrationDate(e.target.value)}
           />
         </div>
 
@@ -83,6 +138,8 @@ const Form = () => {
             rows="10"
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
             placeholder="Describe the symptoms"
+            value={symptoms}
+            onChange={(e) => setSymptoms(e.target.value)}
           />
         </div>
 

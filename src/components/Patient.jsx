@@ -1,33 +1,28 @@
 import React from "react";
 
-const Patient = () => {
+const Patient = ({ patient }) => {
+  const { namePet, owner, email, registrationDate, symptoms } = patient;
   return (
     <div className="mx-5 my-10 bg-white shadow-md px-5 py-10 rounded-xl">
       <p className="font-bold mb-3 text-gray-700 uppercase">
-        Name: <span className="font-normal normal-case">Hook</span>
+        Name: <span className="font-normal normal-case">{namePet}</span>
       </p>
 
       <p className="font-bold mb-3 text-gray-700 uppercase">
-        Owner: <span className="font-normal normal-case">Neto</span>
+        Owner: <span className="font-normal normal-case">{owner}</span>
       </p>
 
       <p className="font-bold mb-3 text-gray-700 uppercase">
-        Email: <span className="font-normal normal-case">mail@mail.com</span>
+        Email: <span className="font-normal normal-case">{email}</span>
       </p>
 
       <p className="font-bold mb-3 text-gray-700 uppercase">
         Registration date:{" "}
-        <span className="font-normal normal-case">Dic 10 2022</span>
+        <span className="font-normal normal-case">{registrationDate}</span>
       </p>
 
       <p className="font-bold mb-3 text-gray-700 uppercase">
-        Symptoms:{" "}
-        <span className="font-normal normal-case">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Error,
-          tempora tempore. Voluptatum, fuga? Quam ea rem facere assumenda saepe
-          tenetur ducimus distinctio alias dolore animi, ipsam molestiae
-          blanditiis esse cupiditate?
-        </span>
+        Symptoms: <span className="font-normal normal-case">{symptoms}</span>
       </p>
     </div>
   );

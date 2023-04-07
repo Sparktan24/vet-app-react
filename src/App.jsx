@@ -4,8 +4,21 @@ import Header from "./components/Header";
 import PatientsList from "./components/PatientsList";
 
 function App() {
-  const [patients, setPatients] = useState([]);
+  const [patients, setPatients] = useState(
+    JSON.parse(localStorage.getItem("patients")) ?? []
+  );
   const [patientEdit, setPatientEdit] = useState({});
+
+  //BEFORE DOING IT DIRECTLY IN STATE
+  /*   useEffect(() => {
+    const getLS = () => {
+      const patientsLS = JSON.parse(localStorage.getItem("patients"));
+      patientsLS?.length > 0 && setPatients(patientsLS);
+
+      console.log("PatientLS: ", patientsLS);
+    };
+    getLS();
+  }, []); */
 
   useEffect(() => {
     localStorage.setItem("patients", JSON.stringify(patients));

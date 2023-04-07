@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Error from "./Error";
 
-const Form = ({ patients, setPatients }) => {
+const Form = ({ patients, setPatients, patientEdit, setPatientEdit }) => {
   const [namePet, setNamePet] = useState("");
   const [owner, setOwner] = useState("");
   const [email, setEmail] = useState("");
@@ -9,6 +9,16 @@ const Form = ({ patients, setPatients }) => {
   const [symptoms, setSymptoms] = useState("");
 
   const [error, setError] = useState(false);
+
+  useEffect(() => {
+    if (Object.keys(patientEdit).length > 0) {
+      setNamePet(patientEdit.namePet);
+      setOwner(patientEdit.owner);
+      setEmail(patientEdit.email);
+      setRegistrationDate(patientEdit.registrationDate);
+      setSymptoms(patientEdit.symptoms);
+    }
+  }, [patientEdit]);
 
   const generateId = () => {
     const random = Math.random().toString(36).substring(2);
@@ -21,7 +31,6 @@ const Form = ({ patients, setPatients }) => {
 
     //  FORM VALIDATION
     if ([namePet, owner, email, registrationDate, symptoms].includes("")) {
-      console.log("There is an empty row");
       setError(true);
       return;
     }
@@ -34,10 +43,22 @@ const Form = ({ patients, setPatients }) => {
       email,
       registrationDate,
       symptoms,
-      id: generateId(),
     };
-    //console.log(objectPatient);
-    setPatients([...patients, objectPatient]);
+
+    if (patientEdit.id) {
+      //  Editing
+      objectPatient.id = patientEdit.id;
+      const updatedPatients = patients.map((patientState) =>
+        patientState.id === patientEdit.id ? objectPatient : patientState
+      );
+
+      setPatients(updatedPatients);
+      setPatientEdit({});
+    } else {
+      //  Register new
+      objectPatient.id = generateId();
+      setPatients([...patients, objectPatient]);
+    }
 
     //  RESET FORM
     setNamePet("");
@@ -153,7 +174,7 @@ const Form = ({ patients, setPatients }) => {
         <input
           type="submit"
           className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-all"
-          value="Add patient"
+          value={patientEdit.id ? "Edit patient" : "Add patient"}
         />
       </form>
     </div>

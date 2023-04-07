@@ -1,6 +1,6 @@
 import Patient from "./Patient";
 
-const PatientsList = ({ patients, setPatientEdit }) => {
+const PatientsList = ({ patients, setPatientEdit, deletePatient }) => {
   return (
     <div className="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll">
       {patients && patients.length ? (
@@ -18,6 +18,7 @@ const PatientsList = ({ patients, setPatientEdit }) => {
               key={patient.id}
               patient={patient}
               setPatientEdit={setPatientEdit}
+              deletePatient={deletePatient}
             />
           ))}
         </>

@@ -11,13 +11,9 @@
   - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
-  - [Prerequisites](#prerequisites)
   - [Install](#install)
   - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
 - [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
@@ -26,10 +22,10 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Math Magicians <a name="about-project"></a>
+# 📖 Vet REACT APP <a name="about-project"></a>
 
-**Math magicians**
-"Vet REACT App" is a website whew you can save your appointments with information about the patient (pet) and its owner to have then in order.
+**Vet REACT APP**
+"Vet REACT App" is a website where you can save your appointments in your browser with information about the patient (pet) and its owner to have then in order.
 
 ## 🛠 Built With <a name="built-with"></a>
 

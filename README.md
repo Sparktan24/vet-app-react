@@ -25,7 +25,7 @@
 # 📖 Vet REACT APP <a name="about-project"></a>
 
 **Vet REACT APP**
-"Vet REACT App" is a website where you can save your appointments in your browser with information about the patient (pet) and its owner to have then in order.
+"Vet REACT App" is a website where you can save your appointments in your browser with information about the patient (pet) and its owner to have them in order.
 
 ## 🛠 Built With <a name="built-with"></a>
 
